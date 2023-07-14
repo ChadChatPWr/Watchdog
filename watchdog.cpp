@@ -1,16 +1,13 @@
 #include <iostream>
 #include "watchdog.h"
 
-class watchdog
+
+watchdog::watchdog()
 {
-	public:
-	watchdog()
-	{
-		std::cout<<"konstruktor"<<std::endl;
-	}
-	~watchdog()
-	{
-		std::cout<<"destruktor"<<std::endl;
-	}
-};
+	std::cout << "konstruktor" << std::endl;
+}
+watchdog::~watchdog()
+{
+	std::cout << "destruktor" << std::endl;
+}
 

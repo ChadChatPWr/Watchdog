@@ -3,7 +3,7 @@
 
 int main()
 {
-	watchdog obiekt;
-	
+	watchdog watchdog;
+
 	return 0;
 }
