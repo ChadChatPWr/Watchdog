@@ -4,31 +4,30 @@
 class watchdog
 {
 public:
+	std::string idComponent;
+
 	watchdog();
-	void monitorComponent();
 	~watchdog();
+
+private:
+	void monitorComponent();
+	void createComponent(std::string idComponent);
+	void createLifeMonitor(std::string idComponent);
 };
 
 class component
 {
 public:
-	std::string idComponent;
 	std::string componentStatus;
-	int componentTimer;
 
 	component();
+	~component();
+
+private:
+	int componentTimer;
+
 	void runComponentTimer();
 	void resetComponentTimer();
-	~component();
-};
-
-class watchdogTimer
-{
-
-public:
-	watchdogTimer(std::string idComponent);
-	void resetWatchdogTImer(std::string idComponent,std::string componentStatus);
-	~watchdogTimer();
 };
 
 class deathManager
@@ -36,11 +35,13 @@ class deathManager
 
 public:
 	deathManager();
+	~deathManager();
+
+private:
 	void handleUnresponsive(std::string idComponent);
 	void kill(std::string idComponent);
 	void checkIsKIlled(std::string idComponent);
 	void reset(std::string idComponent);
-	~deathManager();
 };
 
 class lifeMonitor
@@ -48,9 +49,13 @@ class lifeMonitor
 
 public:
 	lifeMonitor();
-	void createComponent(std::string idComponent);
-	std::string checkStatus(std::string idComponent);
-	void setTimerWatchddog(std::string idComponent);
-	void startDeathManager(std::string idComponent);
 	~lifeMonitor();
+
+private:
+	int watchdogTimer;
+
+	std::string checkStatus(std::string idComponent);
+	void runWatchdogTimer(std::string idComponent);
+	void resetWatchdogTimer(std::string idComponent,std::string componentStatus);
+	void startDeathManager(std::string idComponent);
 };
