@@ -1,7 +1,6 @@
 #include <iostream>
 #include "watchdog.h"
 
-using namespace std;
 
 watchdog::watchdog()
 {
