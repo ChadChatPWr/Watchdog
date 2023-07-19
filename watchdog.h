@@ -1,17 +1,22 @@
 # pragma once
 #include <string>
+#include <thread>
+#include <vector>
 
 class watchdog
 {
 public:
 	std::string idComponent;
+	std::string componentName;
 
 	watchdog();
 	~watchdog();
+	void monitorComponent();
 
 private:
-	void monitorComponent();
-	void createComponent(std::string idComponent);
+
+	void createComponent(const std::vector<std::string>& messages);
+	//void createComponent(std::string jsonMessage);
 	void createLifeMonitor(std::string idComponent);
 };
 
@@ -20,7 +25,7 @@ class component
 public:
 	std::string componentStatus;
 
-	component();
+	component(std::string idComponent, std::string componentName);
 	~component();
 
 private:
