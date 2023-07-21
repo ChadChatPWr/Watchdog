@@ -1,11 +1,9 @@
 #include <iostream>
 #include "watchdog.h"
 
-
-watchdog::watchdog()
-{
-	std::cout << "start watchdog" << std::endl;
-}
+struct mosquitto* watchdog_ = nullptr;
+const char* SERVER_ADDRESS = "localhost"; 
+const int SERVER_PORT = 1883;
 
 void parseJsonMessage(const std::string& jsonMessage, std::string& idComponent, std::string& componentName){
 
@@ -32,30 +30,44 @@ void parseJsonMessage(const std::string& jsonMessage, std::string& idComponent, 
     componentName = jsonMessage.substr(componentNamePos + 1, componentNameEndPos - componentNamePos - 1);
 }
 
-void watchdog::monitorComponent(){
-	std::vector<std::string> messages;
-    std::string jsonMessage;
-	//std::string jsonMessage = "{\"idComponent\":\"12345\",\"componentName\":\"BackendProcessor\"}";
-
-	
-    while (true) {
-        std::getline(std::cin, jsonMessage);
-        messages.push_back(jsonMessage);
-    }
-
-
-	createComponent(messages);
-	//createComponent(jsonMessage);
-
+watchdog::watchdog()
+{
+	mosquitto_lib_init();
+    watchdog_ = mosquitto_new(nullptr, true, this);
+        if (!watchdog_) {
+            std::cerr << "Error: Failed to create MQTT client." << std::endl;
+        }
 }
-/*
+
+void watchdog::connect() {
+    if (watchdog_) {
+        mosquitto_connect_async(watchdog_, SERVER_ADDRESS, SERVER_PORT, 60);
+        mosquitto_subscribe(watchdog_, nullptr, "watchdog", 0);
+    }
+}
+
+void watchdog::loop() {
+    if (watchdog_) {
+        mosquitto_loop_start(watchdog_);
+    }
+}
+
+void watchdog::monitorComponent(struct mosquitto* watchdog_, void* obj, const struct mosquitto_message* message) {
+    if (message->payload && message->topic && strcmp(message->topic, "watchdog") == 0) {    
+        std::string payload = static_cast<const char*>(message->payload);
+        createComponent(payload);
+    }
+}
+
+
 void watchdog::createComponent(std::string jsonMessage){
 	
 	parseJsonMessage(jsonMessage, idComponent, componentName);
 	component component(idComponent, componentName);
 }
-*/
 
+
+/*
 void watchdog::createComponent(const std::vector<std::string>& messages){
 	int numObjects = static_cast<int>(messages.size());
     if (numObjects == 0) {
@@ -84,7 +96,7 @@ void watchdog::createComponent(const std::vector<std::string>& messages){
         t.join();
     }
 }
-
+*/
 
 
 void watchdog::createLifeMonitor(std::string idComponent){}
@@ -92,7 +104,10 @@ void watchdog::createLifeMonitor(std::string idComponent){}
 
 watchdog::~watchdog()
 {
-	std::cout << "stop watchdog" << std::endl;
+	 if (watchdog_) {
+            mosquitto_destroy(watchdog_);
+            mosquitto_lib_cleanup();
+        }
 }
 
 

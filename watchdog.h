@@ -1,22 +1,30 @@
 # pragma once
+#include <iostream>
 #include <string>
+#include <cstring>
+#include <mosquitto.h>
 #include <thread>
 #include <vector>
+
 
 class watchdog
 {
 public:
 	std::string idComponent;
 	std::string componentName;
+	struct mosquitto* watchdog_;
 
 	watchdog();
 	~watchdog();
-	void monitorComponent();
+	void connect();
+	void loop();
+	void monitorComponent(struct mosquitto* watchdog, void* obj, const struct mosquitto_message* message);
 
 private:
 
-	void createComponent(const std::vector<std::string>& messages);
-	//void createComponent(std::string jsonMessage);
+
+	//void createComponent(const std::vector<std::string>& messages);
+	void createComponent(std::string jsonMessage);
 	void createLifeMonitor(std::string idComponent);
 };
 

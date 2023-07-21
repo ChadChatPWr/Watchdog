@@ -5,7 +5,8 @@ int main()
 {
 	watchdog watchdog;
 
-	watchdog.watchdog::monitorComponent();
+	watchdog.watchdog::connect();
+	watchdog.watchdog::loop();
 
 	return 0;
 }
