@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <mosquitto.h>
+#include "mosquitto.h"
 #include <thread>
 #include <vector>
 
@@ -67,7 +67,7 @@ public:
 private:
 	int watchdogTimer;
 
-	std::string checkStatus(std::string idComponent);
+	void checkStatus(std::string idComponent);
 	void runWatchdogTimer(std::string idComponent);
 	void resetWatchdogTimer(std::string idComponent,std::string componentStatus);
 	void startDeathManager(std::string idComponent);

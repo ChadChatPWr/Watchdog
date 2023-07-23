@@ -135,7 +135,7 @@ deathManager::~deathManager(){
 lifeMonitor::lifeMonitor(){
 	std::cout << "start test lifeMonitor" << std::endl;
 }
-std::string lifeMonitor::checkStatus(std::string idComponent){}
+void lifeMonitor::checkStatus(std::string idComponent){}
 void lifeMonitor::runWatchdogTimer(std::string idComponent){}
 void lifeMonitor::resetWatchdogTimer(std::string idComponent,std::string componentStatus){}
 void lifeMonitor::startDeathManager(std::string idComponent){}
