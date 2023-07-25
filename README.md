@@ -17,6 +17,6 @@ The Watchdog component has a strict sequence of work. The diagram can be found [
 
 ## How to compile
 To compile the program, you will need to download and install the GNU Compiler for cpp (the download link can be found [here](https://gcc.gnu.org/)).
-After downloading and installing the compiler, launc your teminal. Using proper commands, go to the main.cpp, watchdog.cpp and watchdog.h destination. While inside the folder with all the files, type 'g++ main.cpp'. This will compile the code and make an executable file named 'a.exe'. To launch the program, type './a', this will launch the program.
+After downloading and installing the compiler, launc your teminal. Using proper commands, go to the main.cpp, watchdog.cpp and watchdog.h destination. While inside the folder with all the files, type 'g++ main.cpp watchdog.cpp'. This will compile the code and make an executable file named 'a.exe'. To launch the program, type './a', this will launch the program.
 
 As of now, no extra libraries are neccesary. This might change with the development of this program.
