@@ -1,6 +1,6 @@
 # Watchdog
 
-#Description
+##Description
 This program is supposed to detect any faulty, unresponsive and unpredictable states of other programs in our ChadChat messenger application. 
 When it detects such states, it deals with them appropriately (detecting, killing and/or restarting threads).  
 The Watchdog component consists of two subcomponents - LifeMonitor and DeathManager: 
