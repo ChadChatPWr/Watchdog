@@ -1,26 +1,25 @@
 cmake_minimum_required(VERSION 3.23)  
 
-set(This watchdog)
+project(watchdog)   
 
-project(${This} C CXX)   
+set(CMAKE_CXX_STANDARD 14)  
+set(CMAKE_CXX_STANDARD_REQUIRED ON)          
 
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 14)            
-
-enable_testing()
-
-add_subdirectory(googletest)
-
-set(Headers
-    watchdog.h
+set(HEADER_FILES
+    include/watchdog.h
+    include/component.h
+    include/deathManager.h
+    include/lifeMonitor.h
 )
 
-set(Sourses
-    main.cpp
-    watchdog.cpp
+set(SOURCE_FILES
+    src/main.cpp
+    src/watchdog.cpp
+    src/component.cpp
+    src/deathManager.cpp
+    src/lifeMonitor.cpp
 )
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/deploy)
 
-add_library(${This} ${Sourses} ${Headers})
-
-add_subdirectory(test)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
