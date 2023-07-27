@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.21)  
 
-project(watchdog)   
+project(watchdog) 
 
 set(CMAKE_CXX_FLAGS "\
-    -02\
+    -O2\
     -Wall\
     -Wextra\
     -Wunused\
@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS "\
     -Wcast-align\
     -Winvalid-pch\
     -Wmissing-include-dirs\
-    ")
+")  
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
