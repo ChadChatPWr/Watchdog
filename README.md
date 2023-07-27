@@ -17,13 +17,26 @@ The Watchdog component has a strict sequence of work. The diagram can be found [
 
 ## How to compile
 To compile the program, you will need to create new folder build with comand 
-mkdir build 
+**mkdir build** 
 then go to this folder and write 
-cmake .. 
+**cmake ..**
 to run CMakeLists.txt
 after that 
-make 
+**make** 
 to build the application executable file,then go to folder deploy and run application with comand
-./watchdog
+**./watchdog**
+
+## How to run tests
+To run tests you need to go to test folder
+**cd test**
+then write 
+**cmake ..**
+and 
+**make**
+go to deploy folder 
+**cd deploy**
+and run tests
+**./watchdog_utest**
+
 
 As  of now, no extra libraries are neccesary. This might change with the development of this program.
