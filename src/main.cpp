@@ -6,7 +6,7 @@
 
 int main()
 {
-	watchdog watchdog;
+	watchdog::watchdog watchdog;
 	
 	return 0;
 }

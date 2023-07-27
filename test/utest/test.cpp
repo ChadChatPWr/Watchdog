@@ -12,6 +12,7 @@ struct test : public Test
 
 TEST_F(test, DemonstrateGTestMacros){
 
+    ASSERT_TRUE(1==1);
 
 }
 }

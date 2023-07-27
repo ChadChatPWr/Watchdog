@@ -1,6 +1,19 @@
-cmake_minimum_required(VERSION 3.23)  
+cmake_minimum_required(VERSION 3.22)  
 
 project(watchdog)   
+
+set(CMAKE_CXX_FLAGS "\
+    -02\
+    -Wall\
+    -Wextra\
+    -Wunused\
+    -Wno-error=maybe-uninitilalized\
+    -Wcast-align\
+    -Winvalid-pch
+    -Wmissing-include-dirs\
+    ")
+
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(CMAKE_CXX_STANDARD 14)  
 set(CMAKE_CXX_STANDARD_REQUIRED ON)          
@@ -23,3 +36,5 @@ set(SOURCE_FILES
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/deploy)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)

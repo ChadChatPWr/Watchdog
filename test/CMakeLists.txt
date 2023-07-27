@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)  
+cmake_minimum_required(VERSION 3.22)  
 project(watchdog_utest)
 
 set ( CMAKE_VERBOSE_MAKEFILE ON)
@@ -16,7 +16,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-get_filename_component(PARENT_DIR ${CAMKE_CURRENT_LIST_DIR} DIRECTORY)
+get_filename_component(PARENT_DIR ${CMAKE_CURRENT_LIST_DIR} DIRECTORY)
 
 set(HEADER_FILES
     ${PARENT_DIR}/include/watchdog.h
@@ -26,7 +26,6 @@ set(HEADER_FILES
 )
 
 set(SOURCE_FILES
-    ${PARENT_DIR}/src/main.cpp
     ${PARENT_DIR}/src/watchdog.cpp
     ${PARENT_DIR}/src/component.cpp
     ${PARENT_DIR}/src/deathManager.cpp
@@ -48,7 +47,11 @@ enable_testing()
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES} ${MOCK_FILES} ${TEST_FILES}) 
 
-target_link_libraries(${PROJECT_NAME} gmonk gtest)
+target_include_directories(${PROJECT_NAME} PUBLIC 
+    mock
+    ${PARENT_DIR}/include)
+
+target_link_libraries(${PROJECT_NAME} gmock gtest)
 
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})
