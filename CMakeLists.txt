@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)  
+cmake_minimum_required(VERSION 3.21)  
 
 project(watchdog)   
 
@@ -7,9 +7,9 @@ set(CMAKE_CXX_FLAGS "\
     -Wall\
     -Wextra\
     -Wunused\
-    -Wno-error=maybe-uninitilalized\
+    -Wno-error=maybe-uninitialized\
     -Wcast-align\
-    -Winvalid-pch
+    -Winvalid-pch\
     -Wmissing-include-dirs\
     ")
 
