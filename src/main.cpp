@@ -5,7 +5,7 @@
 #include "component.h"
 #include "deathManager.h"
 #include "lifeMonitor.h"
-#include "threadPool.h"
+
 
 
 int main()
@@ -26,8 +26,6 @@ int main()
     watchdog.setidComponent(l);
     watchdog.setcomponentName(s);
 
-    //threadPool.enqueue(&watchdog::watchdog::createComponent,&watchdog,watchdog.getidComponent(),watchdog.getcomponentName());
-
     watchdog.createComponent(watchdog.getidComponent(),watchdog.getcomponentName());
 
     s = "database";
@@ -37,7 +35,7 @@ int main()
     watchdog.setcomponentName(s);
 
     watchdog.createComponent(watchdog.getidComponent(),watchdog.getcomponentName());
-    //threadPool.enqueue(&watchdog::watchdog::createComponent,&watchdog,watchdog);
+
 
 	return 0;
 }
