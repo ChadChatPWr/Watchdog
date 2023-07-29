@@ -12,9 +12,7 @@ int main()
 {
 	watchdog::watchdog watchdog;
 	
-    constexpr size_t numThreads =7;
 
-    watchdog::threadPool threadPool(numThreads);
 
     std::cout << "id of main thread is:" << std::this_thread::get_id() << std::endl;
 
@@ -27,15 +25,6 @@ int main()
     watchdog.setcomponentName(s);
 
     watchdog.createComponent(watchdog.getidComponent(),watchdog.getcomponentName());
-
-    s = "database";
-    l = "2";
-
-    watchdog.setidComponent(l);
-    watchdog.setcomponentName(s);
-
-    watchdog.createComponent(watchdog.getidComponent(),watchdog.getcomponentName());
-
 
 	return 0;
 }
