@@ -11,9 +11,9 @@ public:
 	~deathManager();
 
 private:
-	void handleUnresponsive(std::string idComponent);
-	void kill(std::string idComponent);
-	void checkIsKIlled(std::string idComponent);
-	void reset(std::string idComponent);
+	void handleUnresponsive(pid_t idComponent);
+	void killThread(pid_t idComponent);
+	bool checkIsKIlled(pid_t idComponent);
+	void reset(pid_t idComponent);
 };
 }

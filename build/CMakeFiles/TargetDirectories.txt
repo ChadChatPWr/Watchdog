@@ -1,0 +1,3 @@
+/home/filip/Desktop/ChadChat/Watchdog/build/CMakeFiles/watchdog.dir
+/home/filip/Desktop/ChadChat/Watchdog/build/CMakeFiles/edit_cache.dir
+/home/filip/Desktop/ChadChat/Watchdog/build/CMakeFiles/rebuild_cache.dir
