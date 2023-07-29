@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)  
+cmake_minimum_required(VERSION 3.21)  
 project(watchdog_utest)
 
 set ( CMAKE_VERBOSE_MAKEFILE ON)
@@ -11,7 +11,7 @@ include(FetchContent)
 FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG main
+    GIT_TAG	main
 )
 
 FetchContent_MakeAvailable(googletest)
@@ -45,12 +45,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/deploy)
 
 enable_testing()
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES} ${MOCK_FILES} ${TEST_FILES}) 
+add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES} ${MOCK_FILES} ${TEST_FILES}) 
 
 target_include_directories(${PROJECT_NAME} PUBLIC 
-    mock
-    ${PARENT_DIR}/include)
-
+	mock 
+	${PARENT_DIR}/include)
+	
 target_link_libraries(${PROJECT_NAME} gmock gtest)
 
 include(GoogleTest)

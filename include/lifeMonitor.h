@@ -7,15 +7,15 @@ namespace watchdog{
 {
 
 public:
-	lifeMonitor();
+    lifeMonitor(std::string idComponent, std::string componentName);
 	~lifeMonitor();
 
 private:
 	int watchdogTimer;
 
 	void checkStatus(std::string idComponent);
-	void runWatchdogTimer(std::string idComponent);
-	void resetWatchdogTimer(std::string idComponent,std::string componentStatus);
+    int runWatchdogTimer(std::string idComponent);
+    void resetWatchdogTimer(std::string idComponent);
 	void startDeathManager(std::string idComponent);
 };
 }

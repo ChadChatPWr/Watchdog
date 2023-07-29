@@ -2,7 +2,7 @@
 
 namespace watchdog{
 
-deathManager::deathManager(){
+deathManager::deathManager(std::string idComponent){
 	std::cout << "start test deathManager" << std::endl;
 }
 void deathManager::handleUnresponsive(std::string idComponent){}

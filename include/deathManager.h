@@ -7,7 +7,7 @@ class deathManager
 {
 
 public:
-	deathManager();
+    deathManager(std::string idComponent);
 	~deathManager();
 
 private:
