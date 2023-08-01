@@ -6,6 +6,7 @@ namespace watchdog{
 
 lifeMonitor::lifeMonitor(std::string idComponent, std::string componentName){
     std::cout << "start LifeMonitor for component:" << componentName << " with ID = " << idComponent << std::endl;
+    std::cout << "id LifeMonitors of " << componentName << " thread is:" << std::this_thread::get_id() << std::endl;
     runWatchdogTimer(idComponent);
     checkStatus(idComponent);
 }

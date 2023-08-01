@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <chrono>
+#include <mutex>
+#include <vector>
+#include <atomic>
 
 #include "component.h"
 
@@ -16,8 +20,8 @@ public:
     std::string getidComponent();
     void setcomponentName(std::string componentName);
     std::string getcomponentName();
+    static void createComponent(const std::string& idComponent,const std::string& componentName, std::atomic<bool>& shouldClose );
     void monitorComponent();
-    void createComponent(std::string idComponent,std::string componentName);
     ~watchdog();
 
 private:
