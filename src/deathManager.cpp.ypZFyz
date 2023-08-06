@@ -30,7 +30,7 @@ void deathManager::reset(std::string componentName){
         std::cout << "Run" << std::endl;
     }
     else{
-        std::cout << "something wrong" << std::endl;
+        std::cout << "Something wrong" << std::endl;
     }
 }
 deathManager::~deathManager(){
