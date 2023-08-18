@@ -12,6 +12,7 @@ public:
 
     component(pid_t idComponent, std::string componentName);
     void createLifeMonitor(pid_t idComponent, std::string componentName);
+    void createDeathManager(pid_t idComponent, std::string componentName);
     void setComponentStatus(std::string componentStatus);
     std::string getComponentStatus();
 	~component();

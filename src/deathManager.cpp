@@ -1,10 +1,12 @@
 #include "deathManager.h"
+#include "component.h"
 #include <signal.h> //Lib for kill function
 
 namespace watchdog{
 
-deathManager::deathManager(){
-	std::cout << "start test deathManager" << std::endl;
+deathManager::deathManager(pid_t idComponent, std::string componentName){
+	std::cout << "start deathManager for component:" << componentName << " with ID = " << idComponent << std::endl;
+    	std::cout << "id deathManager of " << componentName << " thread is:" << std::this_thread::get_id() << std::endl;
 }
 
 //Check if PID is killed, return false if its still running, return true if it isnt running

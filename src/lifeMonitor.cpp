@@ -16,7 +16,7 @@ void lifeMonitor::checkStatus(pid_t idComponent){
         resetWatchdogTimer(idComponent);
     }
     else{
-        startDeathManager(idComponent);
+        //startDeathManager(idComponent);
     }
 }
 int lifeMonitor::runWatchdogTimer(pid_t idComponent){
@@ -24,9 +24,10 @@ int lifeMonitor::runWatchdogTimer(pid_t idComponent){
     return watchdogTimer;
 }
 void lifeMonitor::resetWatchdogTimer(pid_t idComponent){}
-void lifeMonitor::startDeathManager(pid_t idComponent){
-    deathManager deathManager();
-}
+//Death manager created by component.cpp
+//void lifeMonitor::startDeathManager(pid_t idComponent){
+//    //deathManager deathManager();
+//}
 lifeMonitor::~lifeMonitor(){
 	std::cout << "stop test lifeMonitor" << std::endl;
 }

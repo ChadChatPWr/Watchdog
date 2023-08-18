@@ -1,5 +1,6 @@
 #include "component.h"
 #include "lifeMonitor.h"
+#include "deathManager.h"
 
 namespace watchdog{
 
@@ -16,12 +17,18 @@ component::component(pid_t idComponent, std::string componentName){
     std::cout << "id of " << componentName << " thread is:" << std::this_thread::get_id() << std::endl;
     runComponentTimer();
     createLifeMonitor(idComponent, componentName);
+    createDeathManager(idComponent, componentName);
     setComponentStatus("running");
 
 }
 
 void component::createLifeMonitor(pid_t idComponent, std::string componentName){
     lifeMonitor lifeMonitor(idComponent, componentName);
+}
+
+void component::createDeathManager(pid_t idComponent, std::string componentName){
+	deathManager deathManager(idComponent, componentName);
+
 }
 
 void component::runComponentTimer(){

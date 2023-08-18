@@ -15,7 +15,7 @@ namespace watchdog{
 {
 public:
 
-	watchdog();
+    watchdog();
     void setidComponent(pid_t idComponent);
     pid_t getidComponent();
     void setcomponentName(std::string componentName);

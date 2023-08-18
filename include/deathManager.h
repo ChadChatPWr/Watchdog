@@ -7,7 +7,7 @@ class deathManager
 {
 
 public:
-	deathManager();
+	deathManager(pid_t idComponent, std::string componentName);
 	~deathManager();
 
 private:
