@@ -7,13 +7,13 @@ class deathManager
 {
 
 public:
-	deathManager();
+	deathManager(pid_t idComponent, std::string componentName);
 	~deathManager();
 
 private:
-	void handleUnresponsive(pid_t idComponent);
+    void handleUnresponsive(pid_t idComponent,std::string componentName);
 	void killThread(pid_t idComponent);
-	bool checkIsKIlled(pid_t idComponent);
-	void reset(pid_t idComponent);
+	bool checkIsKilled(pid_t idComponent);
+    void reset(std::string componentName);
 };
 }
